@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.gienapps.movielisting.Activities.dummy.MovieContent;
 import com.gienapps.movielisting.Objects.MovieItem;
@@ -70,6 +71,11 @@ public class MovieItemListActivity extends AppCompatActivity {
             @Override
             public void onComplete(List<MovieItem> movieItems) {
                 adapter.addAll(movieItems);
+            }
+
+            @Override
+            public void onFailed() {
+                Toast.makeText(MovieItemListActivity.this, "Failed to load movie list from server", Toast.LENGTH_SHORT).show();
             }
         });
     }

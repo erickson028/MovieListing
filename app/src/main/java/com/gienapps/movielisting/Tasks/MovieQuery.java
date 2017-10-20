@@ -70,6 +70,8 @@ public class MovieQuery {
 
     public interface DownloadMovieDataListener {
         void onComplete(List<MovieItem> movieItems);
+
+        void onFailed();
     }
 
     public class DownloadMoviewData extends AsyncTask<Void, Void, List<MovieItem>> {
@@ -114,6 +116,8 @@ public class MovieQuery {
 
         @Override
         protected void onPostExecute(List<MovieItem> movieItems) {
+            if(movieItems == null) listener.onFailed();
+
             listener.onComplete(movieItems);
         }
     }
