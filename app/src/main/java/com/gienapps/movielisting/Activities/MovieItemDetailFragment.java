@@ -80,7 +80,7 @@ public class MovieItemDetailFragment extends Fragment {
     public class ViewHolder {
 
         public final ImageView ivBackdropPhoto, ivCoverPhoto;
-        public final TextView tvTitle, tvReleaseYear, tvRating, tvLanguage, tvMpa;
+        public final TextView tvTitle, tvReleaseYear, tvRating, tvLanguage, tvMpa, tvState, tvUrl;
         MovieItem movieItem;
 
         public ViewHolder(View view) {
@@ -93,6 +93,8 @@ public class MovieItemDetailFragment extends Fragment {
             tvTitle = (TextView) view.findViewById(R.id.tvTitle);
             tvLanguage = (TextView) view.findViewById(R.id.tvLanguage);
             tvMpa = (TextView) view.findViewById(R.id.tvMpa);
+            tvState = (TextView) view.findViewById(R.id.tvState);
+            tvUrl = (TextView) view.findViewById(R.id.tvUrl);
         }
 
         public void setMovieItem(MovieItem movieItem) {
@@ -103,6 +105,8 @@ public class MovieItemDetailFragment extends Fragment {
             tvReleaseYear.setText(String.valueOf(movieItem.year));
             tvLanguage.setText(movieItem.language);
             tvMpa.setText(movieItem.mpa_rating);
+            tvState.setText(movieItem.state);
+            tvUrl.setText(movieItem.url);
 
             new ImageLoaderTask(ivCoverPhoto).execute(MovieItem.getMovieUrlImage(movieItem));
             new ImageLoaderTask(ivBackdropPhoto).execute(MovieItem.getMovieBackgroundImage(movieItem));
