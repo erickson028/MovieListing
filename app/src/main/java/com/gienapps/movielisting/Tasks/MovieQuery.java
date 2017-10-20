@@ -60,6 +60,8 @@ public class MovieQuery {
             movie.mpa_rating   = jsonMovie.getString("mpa_rating");
             movie.imdb_code   = jsonMovie.getString("imdb_code");
 
+
+
             movieItems.add(movie);
         }
 
