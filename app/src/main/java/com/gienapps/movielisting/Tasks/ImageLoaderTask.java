@@ -36,6 +36,6 @@ public class ImageLoaderTask extends AsyncTask<String, Void, Bitmap> {
 
     @Override
     protected void onPostExecute(Bitmap bitmap) {
-        ivImage.setImageBitmap(bitmap);
+        if (ivImage != null) ivImage.setImageBitmap(bitmap);
     }
 }
