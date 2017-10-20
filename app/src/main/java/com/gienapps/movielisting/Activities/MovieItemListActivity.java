@@ -4,8 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.util.SortedList;
 import android.support.v7.widget.RecyclerView;
@@ -81,12 +79,6 @@ public class MovieItemListActivity extends AppCompatActivity {
 
         private SortedList<MovieItem> mValues;
 
-        @Override
-        public void onViewRecycled(ViewHolder holder) {
-            super.onViewRecycled(holder);
-            holder.recycle();
-        }
-
         public MovieAdapter() {
 
             mValues = new SortedList<MovieItem>(MovieItem.class, new SortedList.Callback<MovieItem>() {
@@ -127,6 +119,11 @@ public class MovieItemListActivity extends AppCompatActivity {
             });
         }
 
+        @Override
+        public void onViewRecycled(ViewHolder holder) {
+            super.onViewRecycled(holder);
+            holder.recycle();
+        }
 
         @Override
         public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -167,8 +164,8 @@ public class MovieItemListActivity extends AppCompatActivity {
         }
 
 
-
         public void addAll(List<MovieItem> movieItems) {
+            if (movieItems == null) return;
             mValues.addAll(movieItems);
             for (MovieItem movie :
                     movieItems) {
